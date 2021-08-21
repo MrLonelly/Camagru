@@ -1,0 +1,12 @@
+{
+  "name": "camagru",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon ./bin/www"
+  },
+  "keywords": [],
+  "author": "Andrei Pavalachi <andreipatan@live.com>",
+  "license": "ISC"
+}
