@@ -1,5 +1,5 @@
 const http = require('http');
-const Router = require('./core/router');
+const { Router } = require('./core');
 const { reqUtil } = require('./utils');
 
 const server = http.createServer((req, res) => {

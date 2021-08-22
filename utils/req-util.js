@@ -6,7 +6,11 @@ const reqUtil = {};
 reqUtil.extractData = (req) => {
     const parsedUrl = url.parse(req.url, true);
     const path = parsedUrl.pathname;
-    const trimmedPath = path.replace(/^\/+|\/+$/g, '');
+    let trimmedPath = path.replace(/^\/+|\/+$/g, '/');
+
+    if (trimmedPath.length > 1) {
+        trimmedPath = trimmedPath.replace(/\/+$/g, '');
+    }
     const queryStringObject = parsedUrl.query;
     const method = req.method.toLowerCase();
     const headers = req.headers;
