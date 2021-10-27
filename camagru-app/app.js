@@ -1,7 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const { galleryRouter } = require('./routes');
 const { galleryController } = require('./controllers');
 const { dbConfig } = require('./config');
