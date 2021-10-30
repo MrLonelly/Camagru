@@ -4,6 +4,9 @@ module.exports.sql = `
     email VARCHAR(255) NOT NULL,
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id)
+		role ENUM('user', 'admin') DEFAULT 'user',
+		created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
+		updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+		PRIMARY KEY (id)
   )
 `;

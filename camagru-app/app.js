@@ -1,20 +1,7 @@
 const express = require('express');
-const dotenv = require('dotenv');
 const path = require('path');
-const mysql = require('mysql2');
 const { galleryRouter } = require('./routes');
 const { galleryController } = require('./controllers');
-const { dbConfig } = require('./config');
-
-dotenv.config();
-
-const connection = mysql.createConnection({
-	host: dbConfig.HOST,
-	user: dbConfig.USER,
-	password: dbConfig.PASSWORD,
-	database: dbConfig.DB_NAME,
-	port: dbConfig.PORT,
-});
 
 const app = express();
 
@@ -46,6 +33,8 @@ app.use((req, res, next) => {
 
 	// default to plain-text. send()
 	res.type('txt').send('Not found');
+
+	next();
 });
 
 module.exports = app;
