@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const { galleryRouter } = require('./routes');
-const { galleryController } = require('./controllers');
+const { GalleryController } = require('./controllers');
 
 const app = express();
 
@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 
 app.use(express.json());
 
-app.get('/', galleryController.find);
+app.get('/', GalleryController.find);
 
 app.use('/gallery', galleryRouter);
 
