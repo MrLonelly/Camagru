@@ -1,4 +1,3 @@
 .env
-camagru-app/.env
-camagru-app/dist
-camagru-app/node_modules
+node_modules
+**/node_modules
