@@ -10,7 +10,7 @@ public static class ServiceSetup
     {
         services.AddDbContext<AppDbContext>(options =>
         {
-            options.UseNpgsql(connectionString);
+            options.UseSqlServer(connectionString);
         });
 
         return services;

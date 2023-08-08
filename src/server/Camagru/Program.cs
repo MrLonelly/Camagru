@@ -1,3 +1,4 @@
+using Camagru.Application.DependencyInjection;
 using Camagru.Persistence.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,7 @@ builder.Services.AddSwaggerGen();
 
 // Setup services
 builder.Services.AddCamagruDbContext(builder.Configuration.GetConnectionString("Default") ?? string.Empty);
+builder.Services.AddCamagruApplication();
 
 var app = builder.Build();
 

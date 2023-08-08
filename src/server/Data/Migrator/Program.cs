@@ -8,19 +8,16 @@ var configurationBuilder = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
     .AddEnvironmentVariables();
 
-IConfigurationRoot configuration = configurationBuilder.Build();
-string connectionString = configuration.GetConnectionString("Default");
+var configuration = configurationBuilder.Build();
+var connectionString = configuration.GetConnectionString("Default") ?? string.Empty;
 
-DbContextOptionsBuilder<AppDbContext> optionsBuilder = new DbContextOptionsBuilder<AppDbContext>()
-    .UseNpgsql(connectionString);
+var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>()
+    .UseSqlServer(connectionString);
 
-using (AppDbContext sc = new AppDbContext(optionsBuilder.Options))
-{
-    Console.WriteLine("Start migration");
+using var sc = new AppDbContext(optionsBuilder.Options);
+Console.WriteLine("Start migration");
     
-    sc.Database.Migrate();
-    new DbInitializer(sc).Seed();
+sc.Database.Migrate();
+new DbInitializer(sc).Seed();
     
-    Console.WriteLine("End migration");
-}
-    
+Console.WriteLine("End migration");
