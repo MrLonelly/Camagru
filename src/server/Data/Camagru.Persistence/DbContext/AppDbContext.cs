@@ -11,4 +11,5 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
     }
     
     private DbSet<User> Users { get; set; }
+    private DbSet<Role> Roles { get; set; }
 }
